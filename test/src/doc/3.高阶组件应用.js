@@ -22,7 +22,6 @@ const Form = () => {
             case 'password':
               return WillInput(PosswordInput, item)
           }
-
         })
       }
     </>
