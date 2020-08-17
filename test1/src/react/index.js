@@ -1,4 +1,8 @@
 
+export function Component(props){
+  this.props = props
+}
+Component.prototype.isReactComponent = true
 const REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for ? Symbol.for('react.element') : 'REACT_ELEMENT_TYPE'
 const createElement = function(type,config,children){
   let props = {}
@@ -11,7 +15,6 @@ const createElement = function(type,config,children){
   if(childrenLength === 1){
     props.children = children
   }else{
-    console.log(Array.prototype.slice.call(arguments,2))
     props.children = Array.prototype.slice.call(arguments,2)
   }
   return {
@@ -21,5 +24,6 @@ const createElement = function(type,config,children){
   }
 }
 export default {
-  createElement
+  createElement,
+  Component
 }
