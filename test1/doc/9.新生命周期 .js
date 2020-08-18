@@ -2,6 +2,8 @@ import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
 /** 
  * 生命周期 - 新的生命周期 
+ * 执行顺序图：
+ * https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/  
  */
 class Content extends Component {
   constructor(props) {
