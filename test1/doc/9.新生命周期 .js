@@ -64,7 +64,5 @@ class Content extends Component {
     console.log('componentWillUnmount 组件被销毁执行')
   }
 }
- 
-export default Content;
 
 ReactDOM.render(<Content />,document.getElementById('root'))

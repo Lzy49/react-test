@@ -15,27 +15,8 @@ import ReactDOM from 'react-dom'
  *      - 1. class组件
  *      - 2. fun 组件
  */
-
-function createContext (initState) {
-  class Provider extends Component {
-    static contentState = initState
-    render(){
-      Provider.contentState = this.props.value
-      return this.props.children
-    } 
-  }
-  class Consumer extends Component {
-    render() {
-      return this.props.children(Provider.contentState)
-    }
-  }
-  return {
-    Provider,
-    Consumer
-  }
-}
 // 1. 创建 Context
-const TreeContext = createContext();
+const TreeContext = React.createContext();
 // 2. 在最顶层要往下传递的层级写提供者
 class Content extends Component {
   constructor(props) {
@@ -69,11 +50,10 @@ function Wrap(){
 class Header extends Component {
   static contextType = TreeContext // 指定调用那个 Context
   render(){
-    this.context2 = TreeContext.Provider.contentState
     return (
-      <div style={{'color':this.context2.color}}>
+      <div style={{'color':this.context.color}}>
         Header
-        <button onClick={()=>this.context2.setColor('green')}>改绿色</button>
+        <button onClick={()=>this.context.setColor('green')}>改绿色</button>
       </div>
     )
 
@@ -85,7 +65,6 @@ function Index(){
     <TreeContext.Consumer>
       {
         value=>{
-          console.log('Index',value)
           return (
             <div style={{'color':value.color}}>
               index
