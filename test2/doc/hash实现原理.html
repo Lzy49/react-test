@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>index-react-router</title>
+</head>
+<body>
+  <div id="root"></div>
+  <a href="#/home">home</a>
+  <a href="#/root">root</a>
+  <script>
+    console.log(window.history)
+    document.getElementById('root').innerHTML = window.location.hash
+    window.addEventListener('hashchange',()=>{
+      document.getElementById('root').innerHTML = window.location.hash
+    })
+  </script>
+</body>
+</html>

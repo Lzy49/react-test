@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>index-react-router</title>
+</head>
+<body>
+  <div id="root"></div>
+  <a onclick="toPage('index')">home</a>
+  <a onclick="toPage('home')">root</a>
+  <script>
+    !(function(history){
+      const oldPushState = history.pushState
+      history.pushState = function(...ages){
+        if(typeof window.onpushstate === 'function'){
+          window.onpushstate(...ages)
+        }
+        oldPushState.call(history,...ages)
+      }
+    })(window.history)
+    const toPage = (name)=>{
+      window.history.pushState(
+        {'pageName':name},
+        null,
+        '/'+name
+      )
+    }
+    window.onpopstate = function(e){
+      console.log(e.state,e.type,window.location.pathname)
+    }
+    window.onpushstate = function(state,title,url){
+      console.log(state,'onpushstate',url)
+    }
+  </script>
+</body>
+</html>
