@@ -1,16 +1,15 @@
 import React from 'react'
-import RouterContent from './RouterContent'
+import RouterContext from './RouterContext'
+import { pathToRegexp } from 'path-to-regexp'
 export default class Route extends React.Component {
-  static contextType = RouterContent
+  static contextType = RouterContext
   render() {
-    const {path,exact,component:ReactComponent} = this.props
-    console.log(path,this.context.location.pathname)
-    if((exact && path === this.context.location.pathname)){
+    const { path, exact = false, component: ReactComponent } = this.props
+    if (pathToRegexp(path, [], { end: exact }).test(this.context.location.pathname)) {
       return (
         <ReactComponent />
       )
-    }else{
-      return null
     }
+    return null
   }
 }

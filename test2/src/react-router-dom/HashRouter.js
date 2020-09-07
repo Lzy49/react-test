@@ -1,20 +1,20 @@
 import React from 'react';
-import RouterContent from './RouterContent'
-export default class HashRouter extends React.Component{
-  static contextType = RouterContent
+import RouterContext from './RouterContext'
+export default class HashRouter extends React.Component {
+  static contextType = RouterContext
   state = {
-    location:{
+    location: {
       hash: "",
       pathname: window.location.hash.slice(1),
       search: "",
       state: window.history.state
     }
   }
-  componentDidMount(){
-    window.addEventListener('hashchange',()=>{
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
       this.setState({
         ...this.state,
-        location:{
+        location: {
           ...this.state.location,
           pathname: window.location.hash.slice(1),
           state: window.history.state
@@ -23,14 +23,20 @@ export default class HashRouter extends React.Component{
     })
     window.location.hash = window.location.hash || '/'
   }
-  render(){
+
+  render() {
     let value = {
-      location:this.state.location
+      location: this.state.location,
+      history: {
+        push: (path) => {
+          window.location.hash = path
+        }
+      }
     }
     return (
-      <RouterContent.Provider value = {value} >
+      <RouterContext.Provider value={value} >
         {this.props.children}
-      </RouterContent.Provider>
+      </RouterContext.Provider>
     )
   }
 }
