@@ -2,21 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Switch, Link, Redirect } from './react-router-dom'
 import Home from './component/Home'
-import Page1 from './component/Page1'
-import Page2 from './component/Page2'
+import Activity from './component/Activity'
+import ActivityAdd from './component/ActivityAdd'
+import './style/main.css'
 ReactDOM.render(
   <Router>
-    <ul>
+    <ul className="nav">
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/page1">page1</Link></li>
-      <li><Link to="/page2">page2</Link></li>
+      <li><Link to="/activity">activity</Link></li>
     </ul>
-    <div>
+    <div className="index">
       <Switch >
         <Route exact path="/" component={Home} />
-        <Route path="/page1" component={Page1} />
-        <Route path="/page2" component={Page2} />
-        <Route path="/page2" component={Page2} />
+        <Route path="/activity" component={Activity} />
         <Redirect from='/home' to="/" />
       </Switch>
     </div>

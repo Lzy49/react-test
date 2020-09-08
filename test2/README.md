@@ -36,3 +36,5 @@
 #### 实现
 1. 通过判断 `context`中的`pathname`是否和`from`属性相同
 2. 相同则调用`context`中的`push`方法做更新
+### 通过js跳转
+1. js 方法通过Route组件把history传递给子组件

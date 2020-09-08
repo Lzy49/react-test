@@ -7,7 +7,7 @@ export default class Route extends React.Component {
     const { path, exact = false, component: ReactComponent } = this.props
     if (pathToRegexp(path, [], { end: exact }).test(this.context.location.pathname)) {
       return (
-        <ReactComponent />
+        <ReactComponent history={this.context.history} />
       )
     }
     return null
