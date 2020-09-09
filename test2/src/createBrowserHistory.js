@@ -9,15 +9,15 @@ export default () => {
     }
     return href + '#' + encodePath(basename + createPath(location));
   }
-  function push(path, state){
+  function push(path, state) {
     window.history.pushState(
       state,
       null,
       path
     )
   }
-  function block(){
-    
+  function block() {
+
   }
   let history = {
     action: "POP",
@@ -26,9 +26,9 @@ export default () => {
     go,
     goBack,
     goForward,
-    length:globalHistory.length,
+    length: globalHistory.length,
     listen,
-    location:initLocation,
+    location: initLocation,
     push,
     replace
   }

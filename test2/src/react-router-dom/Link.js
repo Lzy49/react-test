@@ -6,14 +6,14 @@ export default (props) => {
       {
         ContentValue => {
           return (
-            <a href={`#${props.to}`} onClick={
-              () => {
+            <a href={'#' + (ContentValue.history.createHref(props.to) || props.to)} onClick={
+              function () {
                 ContentValue.history.push(props.to)
               }
             }>{props.children}</a>
           )
         }
       }
-    </RouterContext.Consumer>
+    </RouterContext.Consumer >
   )
 }

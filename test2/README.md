@@ -38,3 +38,5 @@
 2. 相同则调用`context`中的`push`方法做更新
 ### 通过js跳转
 1. js 方法通过Route组件把history传递给子组件
+## 小记录
+1. BrowserRouter 和 HashRouter传值有区别，BrowserRouter的state刷新后依然存在HashRouter的state刷新后消失

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, Switch, Link, Redirect } from './react-router-dom'
 import Home from './component/Home'
 import Activity from './component/Activity'
-import ActivityAdd from './component/ActivityAdd'
 import './style/main.css'
 ReactDOM.render(
   <Router>
