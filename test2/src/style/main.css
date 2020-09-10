@@ -20,6 +20,9 @@ a{
 .nav > li > a{
   color: #fff;
 }
+.left-nav> li > .on,.nav > li > .on{
+  color: red;
+}
 .index{
   padding: 20px;
 }

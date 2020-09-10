@@ -17,7 +17,7 @@ export default class HashRouter extends React.Component {
         location: {
           ...this.state.location,
           pathname: window.location.hash.slice(1),
-          state: window.history.state
+          state: this.locationState
         }
       })
     })
@@ -25,22 +25,26 @@ export default class HashRouter extends React.Component {
   }
 
   render() {
+    const that = this
+    const createHref = (location) => {
+      if (typeof (location) === "object") {
+        return location.pathname
+      }
+      return undefined
+    }
+    const push = (to) => {
+      if (createHref(to)) {
+        window.location.hash = createHref(to)
+        that.locationState = to.state
+      } else {
+        window.location.hash = to
+      }
+    }
     let value = {
       location: this.state.location,
       history: {
-        push: (to) => {
-          if (typeof to === 'object') {
-            window.location.hash = to.pathname
-          } else {
-            window.location.hash = to
-          }
-        },
-        createHref: (location) => {
-          if (typeof (location) === "object") {
-            return location.pathname
-          }
-          return undefined
-        }
+        createHref,
+        push
       }
     }
     return (

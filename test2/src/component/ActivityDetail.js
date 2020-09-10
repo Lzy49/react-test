@@ -6,7 +6,7 @@ export default (props) => {
     activityInfo = props.location.state.user
   }
   if (!activityInfo) {
-    let activitys = JSON.parse(localStorage.getItem('activitys') != null ? localStorage.getItem('activitys') : '[]')
+    let activitys = JSON.parse(localStorage.getItem('activitys') !== null ? localStorage.getItem('activitys') : '[]')
     activityInfo = activitys.find(user => (user.id == props.match.params.id))
   }
   return (
