@@ -26,6 +26,7 @@ export default class HashRouter extends React.Component {
 
   render() {
     const that = this
+    let initPrompt = false
     const createHref = (location) => {
       if (typeof (location) === "object") {
         return location.pathname
@@ -33,6 +34,10 @@ export default class HashRouter extends React.Component {
       return undefined
     }
     const push = (to) => {
+      if (initPrompt) {
+        const ok = window.confirm(typeof initPrompt === 'function' ? initPrompt(this.state.location) : initPrompt)
+        if (!ok) return
+      }
       if (createHref(to)) {
         window.location.hash = createHref(to)
         that.locationState = to.state
@@ -40,11 +45,16 @@ export default class HashRouter extends React.Component {
         window.location.hash = to
       }
     }
+    const block = (prompt) => {
+      initPrompt = prompt
+    }
     let value = {
-      location: this.state.location,
+      location: that.state.location,
       history: {
+        prompt: initPrompt,
         createHref,
-        push
+        push,
+        block
       }
     }
     return (

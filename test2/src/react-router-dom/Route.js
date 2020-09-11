@@ -5,7 +5,7 @@ export default class Route extends React.Component {
   static contextType = RouterContext
   render() {
     const location = this.context.location
-    const { path, exact = false, component: ReactComponent, render, children } = this.props
+    const { path = '/', exact = false, component: ReactComponent, render, children } = this.props
     let paramsName = []
     const regexp = pathToRegexp(path, paramsName, { end: exact })
     const matched = location.pathname.match(regexp)

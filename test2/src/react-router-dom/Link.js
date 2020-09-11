@@ -6,7 +6,7 @@ export default (props) => {
       {
         ContentValue => {
           return (
-            <a {...props} href={`#${ContentValue.history.createHref(props.to) || props.to}`} onClick={
+            <a {...props} onClick={
               function () {
                 ContentValue.history.push(props.to)
               }

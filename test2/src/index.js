@@ -4,10 +4,14 @@ import { HashRouter as Router, Route, Switch, NavLink, Redirect } from './react-
 import Home from './component/Home'
 import Activity from './component/Activity'
 import Login from './component/Login'
+import Logo from './component/Logo'
 import './style/main.css'
 ReactDOM.render(
   <Router>
     <ul className="nav">
+      <li>
+        <Logo text="logo" />
+      </li>
       <li><NavLink exact activeName="on" to="/">Home</NavLink></li>
       <li><NavLink activeName="on" to="/activity">activity</NavLink></li>
       <li><NavLink activeName="on" to="/login">login</NavLink></li>

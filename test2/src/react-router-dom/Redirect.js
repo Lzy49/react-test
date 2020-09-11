@@ -1,4 +1,4 @@
-import react, { useContext } from 'react'
+import { useContext } from 'react'
 import RouterContext from './RouterContext'
 export default (props) => {
   let contentValue = useContext(RouterContext)

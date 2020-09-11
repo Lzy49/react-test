@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Route } from '../react-router-dom'
+import { NavLink, Route, Redirect } from '../react-router-dom'
 import ActivityAdd from './ActivityAdd'
 import ActivityList from './ActivityList'
 import ActivityDetail from './ActivityDetail'
@@ -13,6 +13,7 @@ export default () => (
       <Route path="/activity/add" component={ActivityAdd} />
       <Route path="/activity/list" component={ActivityList} />
       <Route path="/activity/detail/:id" component={ActivityDetail} />
+      <Redirect from="/activity" to="/activity/list" />
     </div>
   </>
 )

@@ -16,9 +16,12 @@ a{
 .nav > li{
   padding:15px 20px;
   float: left;
+  color: #fff;
+  font-size: 20px;
 }
 .nav > li > a{
   color: #fff;
+  font-size: 16px;
 }
 .left-nav> li > .on,.nav > li > .on{
   color: red;
