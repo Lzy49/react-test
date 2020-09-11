@@ -24,6 +24,12 @@
 1. 实现跳转路由 （形同`a`标签）
 #### 实现
 1. 利用传递的`to` 参数 和 `context` 中的 `push` 方法 实现路由跳转 （`push` 方法在HashRouter中实现 修改`window.location.hash`值）
+### NavLink
+#### 作用
+1. 实现跳转路由 （形同`a`标签）
+#### 实现
+1. 利用 `Route` 组件判断是否是当前页面
+1. 利用 `Link` 组件实现跳转，并对其实现class，style修改
 ### Switch
 #### 作用
 1. 保证只渲染一个子组件
@@ -32,11 +38,23 @@
 2. 比对每一个子组件的`path` 成功则渲染，失败则不做渲染
 ### Redirect
 #### 作用
-1. 实现默认跳转
+1. 实现默认跳转（重定向）
 #### 实现
 1. 通过判断 `context`中的`pathname`是否和`from`属性相同
 2. 相同则调用`context`中的`push`方法做更新
 ### 通过js跳转
 1. js 方法通过Route组件把history传递给子组件
+### Prompt
+#### 作用
+1. 实现跳转页面时进行拦截
+#### 实现
+1. 在  `history` 中添加`block`函数
+2. 在 `push`的时候判断`block`值。进行拦击
+### withRouter
+#### 作用
+1. 为没有 `history`的组件添加 `history`
+#### 实现
+1. 利用高阶组件
+2. 传递  `RouterContext` 的 `history`给`props`
 ## 小记录
 1. BrowserRouter 和 HashRouter传值有区别，BrowserRouter的state刷新后依然存在HashRouter的state刷新后消失
